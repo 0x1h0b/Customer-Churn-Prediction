@@ -8,10 +8,8 @@ This repository contains code and resources for predicting credit card customer 
 - [Data](#data)
 - [Methodology](#methodology)
   - [Exploratory Data Analysis](#exploratory-data-analysis)
-  - [Data Preprocessing](#data-preprocessing)
   - [Feature Engineering](#feature-engineering)
-  - [Model Training & Evaluation](#model-training-&-evaluation)
-  - [Evaluation](#evaluation)
+  - [Model Training and Evaluation](#model-training-and-evaluation)
 - [Usage](#usage)
 - [License](#license)
 
@@ -24,38 +22,40 @@ This repository contains code and resources for predicting credit card customer 
 - Data is taken from Kaggle , it contains a csv file "BankChurners.csv".
   - it has 22 feature columns , which gives out various personal information like age ,gender, educationa nd martial status along with their financial activity and status like income and daily/monthly/quaterly usages.
   - it's target column is "Attrition_Flag" which contains binary data indiacting weather the customer is churned or not.
+  - no Null entries found in dataset. 
     
 - data source, Kaggle://[credit-card-customers](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers)
+  
 
 ## Methodology
 
-#### Exploratory Data Analysis
+### Exploratory Data Analysis
 - utilized pie chart and count plot to plot different categorical columns against target column to understand the frequency distribution.
-  - 
+- utilized histogram, boxplot and heatmap to visualize correlation and distribution for various continous datatype columns, to understand outliers
+  mean and standard deviation.
+- Observations :-
+    - There are non-linear relationship between target variable and input variable, also many input variables doesn't have gaussian distribution.
+    - Total_Trans_Ct, Total_Trans_Amt, Total_Revolving_Bal,Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio columns seems to have effect on  determining whether a customer leave service or not.
+    - data columns like Age and month_on_book variable seems irrevalant to decision whether a customer leave service or not.
 
-#### Data Preprocessing
-- There are non-linear relationship between target variable and input variable, also many input variables doesn't have gaussian distribution.
-- Total_Trans_Ct, Total_Trans_Amt, Total_Revolving_Bal,Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio columns seems to have effect on determining whether a customer leave service or not.
-- data columns like Age and month_on_book variable seems irrevalant to decision whether a customer leave service or not.
-
-#### Feature Engineering
+### Feature Engineering
 - Feature selection done using feature importance method that uses estimator to determine the importance of the variable in determining the value of target variable.
 - Because the data contains non-linear,multi-variate complex relations we will use random forest and xgboost.
 
-#### Model Training & Evaluation
+### Model Training and Evaluation
 Utilized K fold cross validation technique with different ML algorithms for training and evaluation .
 below are the results.
 
-- Imabalance data:-
-![model_evaluation_i](static/model_eval_normal.png "imbalance data")
+- Imabalance data:- <br>
+<img src="static/model_eval_normal.png" alt="static/model_eval_normal.png" width="600" height="400" />
 
-- Balanced data:-
-![model_evaluation_b](static/model_eval_balanced.png "balanced data")
+- Balanced data:- <br>
+<img src="static/model_eval_balanced.png" alt="static/model_eval_balanced.png" width="600" height="400" />
 
 XGBClassifier gives the highest accuracy here when compared with other algorithms for both the scenarios.
 selected this as a final model.
 
-classification report for XGBClassifier:-
+- classification report for XGBClassifier:- <br>
 ![classification_report](static/final_res_report.png "classification report")
 
 ## Usage
