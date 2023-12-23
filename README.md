@@ -59,6 +59,7 @@ selected this as a final model.
 ![classification_report](static/final_res_report.png "classification report")
 
 ## Flask app Usage
+#### !! This Part is under Progress !! <br> <br>
 Create a conda environment using environment file , activate that environment and the run the app.py file.
 if run sucessfully, you should be able to access the web app at localhost.
 you can also explore the notebook file (analysis.ipynb).
