@@ -7,12 +7,12 @@ This repository contains code and resources for predicting credit card customer 
 - [Project Background](#project-background)
 - [Data](#data)
 - [Methodology](#methodology)
+  - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Data Preprocessing](#data-preprocessing)
   - [Feature Engineering](#feature-engineering)
-  - [Model Training](#model-training)
+  - [Model Training & Evaluation](#model-training-&-evaluation)
   - [Evaluation](#evaluation)
 - [Usage](#usage)
-- [Results](#results)
 - [License](#license)
 
 ## Project Background
@@ -22,25 +22,41 @@ This repository contains code and resources for predicting credit card customer 
 
 ## Data
 - Data is taken from Kaggle , it contains a csv file "BankChurners.csv".
-  - it has 22 feature columns , which gives out vrious personal information like age ,gender, educationa nd martial status along with their financial activity and status like income and daily/monthly/quaterly usages.
+  - it has 22 feature columns , which gives out various personal information like age ,gender, educationa nd martial status along with their financial activity and status like income and daily/monthly/quaterly usages.
   - it's target column is "Attrition_Flag" which contains binary data indiacting weather the customer is churned or not.
     
-- data source :- https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers
+- data source, Kaggle://[credit-card-customers](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers)
 
 ## Methodology
 
+#### Exploratory Data Analysis
+- utilized pie chart and count plot to plot different categorical columns against target column to understand the frequency distribution.
+  - 
 
 #### Data Preprocessing
-Outline the steps taken to clean and preprocess the data. Include any data transformations, handling missing values, and scaling or normalization.
+- There are non-linear relationship between target variable and input variable, also many input variables doesn't have gaussian distribution.
+- Total_Trans_Ct, Total_Trans_Amt, Total_Revolving_Bal,Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio columns seems to have effect on determining whether a customer leave service or not.
+- data columns like Age and month_on_book variable seems irrevalant to decision whether a customer leave service or not.
 
 #### Feature Engineering
-Explain the process of creating new features or selecting relevant features for the churn prediction model.
+- Feature selection done using feature importance method that uses estimator to determine the importance of the variable in determining the value of target variable.
+- Because the data contains non-linear,multi-variate complex relations we will use random forest and xgboost.
 
-#### Model Training
-Detail the steps involved in training machine learning models. Discuss the algorithms used, hyperparameter tuning, and model selection techniques. Provide code snippets or references to the training scripts/notebooks.
+#### Model Training & Evaluation
+Utilized K fold cross validation technique with different ML algorithms for training and evaluation .
+below are the results.
 
-#### Evaluation
-Explain how the models were evaluated. Discuss the metrics used to assess model performance and how well the models predict churn.
+- Imabalance data:-
+![model_evaluation_i](static/model_eval_normal.png "imbalance data")
+
+- Balanced data:-
+![model_evaluation_b](static/model_eval_balanced.png "balanced data")
+
+XGBClassifier gives the highest accuracy here when compared with other algorithms for both the scenarios.
+selected this as a final model.
+
+classification report for XGBClassifier:-
+![classification_report](static/final_res_report.png "classification report")
 
 ## Usage
 Create a conda environment using environment file , activate that environment and the run the app.py file.
@@ -58,14 +74,10 @@ conda env create --name <envname> --file=environments.yml
 # activate env
 conda activate <envname>
 
-# run app.py
+# run app.py, for flask based web server
 python app.py
 
 ```
-
-## Results
-Present the findings and results of the churn prediction model. Discuss model performance metrics, any insights gained from the analysis, and potential business implications.
-
 
 ## License
 
