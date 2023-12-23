@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML APP</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="main_body">
+        <div id="main_title">
+            <h1>Customer Attrition Analysis</h1>
+        </div>
+
+        <div id="desc">
+            <h3>Enter Customer Details</h3>
+        </div>
+
+        <div id="feature_input">
+            <form action="{{ url_for('predict')}}" method="post">
+                <input type="number" name="Total_Trans_Amt" placeholder="Total_Trans_Amt" required="required" />
+                <input type="number" name="Total_Trans_Ct" placeholder="Total_Trans_Ct" required="required" />
+                <input type="number" name="Total_Ct_Chng_Q4_Q1" placeholder="Total_Ct_Chng_Q4_Q1" required="required" />
+                <input type="number" name="Total_Revolving_Bal" placeholder="Total_Revolving_Bal" required="required" />
+                <input type="number" name="Avg_Utilization_Ratio" placeholder="Avg_Utilization_Ratio" required="required" />
+                <input type="number" name="Total_Amt_Chng_Q4_Q1" placeholder="Total_Amt_Chng_Q4_Q1" required="required" />
+                <input type="number" name="Total_Relationship_Count" placeholder="Total_Relationship_Count" required="required" />
+                <input type="number" name="Avg_Open_To_Buy" placeholder="Avg_Open_To_Buy" required="required" />
+                <input type="number" name="Credit_Limit" placeholder="Credit_Limit" required="required" />
+                <input type="number" name="Customer_Age" placeholder="Customer_Age" required="required" />
+                <input type="number" name="Contacts_Count_12_mon" placeholder="Contacts_Count_12_mon" required="required" />
+                <input type="number" name="Months_on_book" placeholder="Months_on_book" required="required" />
+                <input type="number" name="Months_Inactive_12_mon" placeholder="Months_Inactive_12_mon" required="required" />
+                <input type="number" name="Dependent_count" placeholder="Dependent_count" required="required" />
+        
+                <button type="submit" class="btn">Predict</button>
+            </form>
+        
+        </div>
+
+        
+        
+    </div>
+</body>
+</html>
