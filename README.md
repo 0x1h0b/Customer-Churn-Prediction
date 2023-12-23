@@ -10,7 +10,7 @@ This repository contains code and resources for predicting credit card customer 
   - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Feature Engineering](#feature-engineering)
   - [Model Training and Evaluation](#model-training-and-evaluation)
-- [Usage](#usage)
+- [Flask app Usage](#flask-app-usage)
 - [License](#license)
 
 ## Project Background
@@ -58,7 +58,7 @@ selected this as a final model.
 - classification report for XGBClassifier:- <br>
 ![classification_report](static/final_res_report.png "classification report")
 
-## Usage
+## Flask app Usage
 Create a conda environment using environment file , activate that environment and the run the app.py file.
 if run sucessfully, you should be able to access the web app at localhost.
 you can also explore the notebook file (analysis.ipynb).
